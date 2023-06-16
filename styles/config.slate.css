@@ -1,0 +1,88 @@
+/* Other styles */
+:root {
+  --border-radius: theme(borderRadius.md);
+  --pre-code-line-highlight-border-width: 3px;
+}
+
+/* Colors */
+:root {
+  /* light mode colors */
+  --color-accent: 271 81% 56%; /* hsl */
+  --color-background-primary: 210 40% 98%;
+  --color-background-secondary: 210 40% 96%;
+  --color-background-tertiary: 213 27% 84%;
+  --color-text-primary: theme(colors.slate.950);
+  --color-text-secondary: theme(colors.slate.600);
+  --color-text-tertiary: theme(colors.slate.500);
+
+  /* markdown colors */
+  --color-body: theme(colors.slate.700);
+  --color-borders: theme(colors.slate.300);
+  --color-headings: theme(colors.slate.900);
+  --color-lead: theme(colors.slate.600);
+  --color-link-inactive: theme(colors.slate.500);
+  --color-links: hsl(var(--color-accent));
+  --color-bold: theme(colors.slate.900);
+  --color-counters: theme(colors.slate.500);
+  --color-bullets: theme(colors.slate.300);
+  --color-hr: theme(colors.slate.200);
+  --color-quotes: theme(colors.slate.600);
+  --color-quote-borders: theme(colors.slate.300);
+  --color-captions: var(--color-quotes);
+  --color-td-borders: var(--color-borders);
+  --color-th-bg: theme(colors.slate.200);
+  --color-th-borders: var(--color-borders);
+  --color-toc-button-bg: hsl(var(--color-background-secondary));
+
+  /* code blocks */
+  --color-code-bg: theme(colors.slate.200);
+  --color-code-fg: theme(colors.slate.950);
+  --color-pre-code-fg: theme(colors.gray.500);
+  --color-pre-code-bg: hsl(var(--color-background-primary) / 1);
+  --color-pre-code-borders: var(--color-borders);
+  --color-pre-code-title-bg: var(--color-th-bg);
+  --color-pre-code-title-fg: theme(colors.slate.950);
+  --color-pre-code-line-highlight: theme(colors.amber.100/50%);
+  --color-pre-code-line-highlight-border: theme(colors.amber.300);
+}
+
+:root[data-theme="dark"] {
+  /* dark mode colors */
+  --color-accent: 271 91% 65%; /* hsl */
+  --color-background-primary: 229 84% 5%;
+  --color-background-secondary: 222 47% 11%;
+  --color-background-tertiary: 217 33% 17%;
+  --color-text-primary: theme(colors.slate.50);
+  --color-text-secondary: theme(colors.slate.400);
+  --color-text-tertiary: theme(colors.slate.600);
+
+  /* markdown colors */
+  --color-body: theme(colors.slate.300);
+  --color-borders: theme(colors.slate.800);
+  --color-headings: theme(colors.white);
+  --color-lead: theme(colors.slate.400);
+  --color-link-inactive: theme(colors.slate.500);
+  --color-links: theme(colors.purple.500);
+  --color-bold: theme(colors.white);
+  --color-counters: theme(colors.slate.400);
+  --color-bullets: theme(colors.slate.600);
+  --color-hr: theme(colors.slate.700);
+  --color-quotes: var(--color-text-secondary);
+  --color-quote-borders: theme(colors.slate.700);
+  --color-captions: var(--color-quotes);
+  --color-th-bg: theme(colors.slate.900);
+  --color-th-borders: var(--color-borders);
+  --color-td-borders: var(--color-borders);
+  --color-toc-button-bg: hsl(var(--color-background-secondary));
+
+  /* code blocks */
+  --color-code-bg: theme(colors.slate.800);
+  --color-code-fg: theme(colors.white);
+  --color-pre-code-fg: theme(colors.gray.500);
+  --color-pre-code-bg: hsl(var(--color-background-primary) / 1);
+  --color-pre-code-borders: var(--color-borders);
+  --color-pre-code-title-bg: var(--color-th-bg);
+  --color-pre-code-title-fg: theme(colors.slate.200);
+  --color-pre-code-line-highlight: theme(colors.amber.500/10%);
+  --color-pre-code-line-highlight-border: theme(colors.amber.600/50%);
+}

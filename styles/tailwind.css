@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --px-padding: 1rem;
+    @apply md:[--px-padding:2rem] lg:[--px-padding:3rem];
+  }
+
+  body {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .post-img {
+    @apply aspect-5/3 rounded-md object-cover;
+  }
+
+  .post-grid {
+    @apply grid [&>div]:col-span-full gap-8;
+    @apply md:grid-cols-2 lg:grid-cols-3 lg:gap-y-12;
+  }
+
+  .tag {
+    @apply text-sm font-medium px-3 py-1 rounded-full inline-block;
+  }
+
+  .page-heading {
+    @apply text-xl lg:text-2xl font-bold mb-8 lg:mb-12;
+  }
+
+  .copy-btn {
+    @apply absolute top-2 right-2 p-1.5;
+    @apply rounded-global opacity-0 bg-background-tertiary text-foreground-secondary;
+    @apply transition-[opacity,transform];
+    @apply active:scale-90;
+  }
+
+  pre:hover .copy-btn {
+    @apply opacity-80;
+  }
+
+  pre:hover .copy-btn:hover {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+  .max-w-container-center {
+    @apply max-w-screen-2xl mx-auto px-[--px-padding];
+  }
+}

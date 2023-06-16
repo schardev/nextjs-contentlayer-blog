@@ -1,0 +1,88 @@
+/* Other styles */
+:root {
+  --border-radius: theme(borderRadius.md);
+  --pre-code-line-highlight-border-width: 3px;
+}
+
+/* Colors */
+:root {
+  /* light mode colors */
+  --color-accent: 32 95% 44%; /* hsl */
+  --color-background-primary: 60 9% 98%;
+  --color-background-secondary: 60 5% 96%;
+  --color-background-tertiary: 20 6% 90%;
+  --color-text-primary: theme(colors.stone.950);
+  --color-text-secondary: theme(colors.stone.600);
+  --color-text-tertiary: theme(colors.stone.500);
+
+  /* markdown colors */
+  --color-body: theme(colors.stone.700);
+  --color-borders: theme(colors.stone.300);
+  --color-headings: theme(colors.stone.900);
+  --color-lead: theme(colors.stone.600);
+  --color-link-inactive: theme(colors.stone.500);
+  --color-links: hsl(var(--color-accent));
+  --color-bold: theme(colors.stone.900);
+  --color-counters: theme(colors.stone.500);
+  --color-bullets: theme(colors.stone.300);
+  --color-hr: theme(colors.stone.200);
+  --color-quotes: theme(colors.stone.600);
+  --color-quote-borders: theme(colors.stone.300);
+  --color-captions: var(--color-quotes);
+  --color-td-borders: var(--color-borders);
+  --color-th-bg: theme(colors.stone.200);
+  --color-th-borders: var(--color-borders);
+  --color-toc-button-bg: hsl(var(--color-background-secondary));
+
+  /* code blocks */
+  --color-code-bg: theme(colors.stone.200);
+  --color-code-fg: theme(colors.stone.950);
+  --color-pre-code-fg: theme(colors.stone.500);
+  --color-pre-code-bg: hsl(var(--color-background-primary) / 1);
+  --color-pre-code-borders: var(--color-borders);
+  --color-pre-code-title-bg: var(--color-th-bg);
+  --color-pre-code-title-fg: theme(colors.stone.950);
+  --color-pre-code-line-highlight: theme(colors.amber.100/50%);
+  --color-pre-code-line-highlight-border: theme(colors.amber.300);
+}
+
+:root[data-theme="dark"] {
+  /* dark mode colors */
+  --color-accent: 38 92% 50%; /* hsl */
+  --color-background-primary: 20 14% 4%;
+  --color-background-secondary: 24 10% 10%;
+  --color-background-tertiary: 12 6% 15%;
+  --color-text-primary: theme(colors.stone.50);
+  --color-text-secondary: theme(colors.stone.400);
+  --color-text-tertiary: theme(colors.stone.600);
+
+  /* markdown colors */
+  --color-body: theme(colors.stone.300);
+  --color-borders: theme(colors.stone.800);
+  --color-headings: theme(colors.stone.50);
+  --color-lead: theme(colors.stone.400);
+  --color-link-inactive: theme(colors.stone.500);
+  --color-links: hsl(var(--color-accent));
+  --color-bold: theme(colors.stone.100);
+  --color-counters: theme(colors.stone.400);
+  --color-bullets: theme(colors.stone.600);
+  --color-hr: theme(colors.stone.700);
+  --color-quotes: var(--color-text-secondary);
+  --color-quote-borders: theme(colors.stone.700);
+  --color-captions: var(--color-quotes);
+  --color-th-bg: theme(colors.stone.900);
+  --color-th-borders: var(--color-borders);
+  --color-td-borders: var(--color-borders);
+  --color-toc-button-bg: hsl(var(--color-background-secondary));
+
+  /* code blocks */
+  --color-code-bg: theme(colors.stone.800);
+  --color-code-fg: theme(colors.stone.100);
+  --color-pre-code-fg: theme(colors.stone.400);
+  --color-pre-code-bg: hsl(var(--color-background-primary) / 1);
+  --color-pre-code-borders: var(--color-borders);
+  --color-pre-code-title-bg: var(--color-th-bg);
+  --color-pre-code-title-fg: theme(colors.stone.200);
+  --color-pre-code-line-highlight: theme(colors.amber.500/10%);
+  --color-pre-code-line-highlight-border: theme(colors.amber.600/50%);
+}

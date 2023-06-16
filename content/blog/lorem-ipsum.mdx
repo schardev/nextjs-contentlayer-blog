@@ -1,0 +1,393 @@
+---
+title: Lorem Ipsum
+description: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur harum reprehenderit, nemo veniam sit facere voluptates tempore delectus nam? Esse et voluptatibus est adipisci odit commodi eum.
+date: "2003-01-12"
+tags:
+  - Lorem
+  - Ipsum
+  - dolar
+  - esse
+  - et
+  - sit
+  - amet
+  - amet
+---
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+###### Heading 6
+
+### Always start your top-level headings with `<h2>`
+
+There should only be one `<h1>` tag in the whole page, which is reserved by the blog post title, so you should always start your top level headings with `<h2>` tag instead. If you still include an `<h1>` tag then the **entire post headings will be normalized by increasing their heading level by 1** (i.e, `<h1>` -> `<h2>` and `<h2>` -> `<h3>`).
+
+## Links
+
+Markup:
+
+```
+This is a paragraph that contains an [external link](https://web.dev/blog/), [an internal link](/about) and an [anchor link](#heading-2).
+
+Raw links can be auto-linked, just like Github. For example:
+www.example.com
+https://github.com
+
+```
+
+Rendered:
+
+This is a paragraph that contains an [external link](https://web.dev/blog/), [an internal link](/about) and an [anchor link](#heading-2).
+
+Raw links can be auto-linked, just like Github. For example:
+www.example.com
+https://github.com
+
+## Blockquotes
+
+Markup:
+
+```
+> This is a normal blockquote.
+
+> Blockquotes can be nested as well of course.
+>
+> > see.
+
+```
+
+Rendered:
+
+> This is a normal blockquote.
+
+> Blockquotes can be nested as well of course.
+>
+> > see.
+
+## Callout cards
+
+Markup:
+
+````
+<Callout>This is the default callout card</Callout>
+
+<Callout variant="warning">This is a warning callout</Callout>
+
+<Callout variant="danger">
+  <p>This is a danger callout</p>
+
+    ```tsx
+    "use strict";
+
+    const obj = { a: "Hello", b: "World" };
+    const test = ["This", "is", "cool", "isn't", "it?"]
+    ```
+
+    ```tsx
+    const Page = () => {
+      return <div>Hellow World!</div>;
+    };
+    ```
+</Callout>
+````
+
+Rendered:
+
+<Callout>This is the default callout card</Callout>
+
+<Callout variant="warning">This is a warning callout</Callout>
+
+<Callout variant="danger">
+  <p>This is a danger callout</p>
+
+    ```tsx
+    "use strict";
+
+    const obj = { a: "Hello", b: "World" };
+    const test = ["This", "is", "cool", "isn't", "it?"]
+    ```
+
+    ```tsx
+    const Page = () => {
+      return <div>Hellow World!</div>;
+    };
+    ```
+
+</Callout>
+
+## Lists
+
+Markup:
+
+```
+- This
+- is
+- a
+- nested
+  - list
+  - cool
+- Similar to how in Github
+
+```
+
+Rendered:
+
+- This
+- is
+- a
+- nested
+  - list
+  - cool
+- Similar to how in Github
+
+## Tables
+
+Markup:
+
+```
+| this  | is    | a     | table |
+| ----- | ----- | ----- | ----- |
+| col 1 | col 2 | col 3 | col 4 |
+| col 1 | col 2 | col 3 | col 4 |
+| col 1 | col 2 | col 3 | col 4 |
+
+```
+
+Rendered:
+
+| this  | is    | a     | table |
+| ----- | ----- | ----- | ----- |
+| col 1 | col 2 | col 3 | col 4 |
+| col 1 | col 2 | col 3 | col 4 |
+| col 1 | col 2 | col 3 | col 4 |
+
+Markup:
+
+```
+| Left aligned Header | Right aligned Header | Center aligned Header |
+| :------------------ | -------------------: | :-------------------: |
+| Content Cell        |         Content Cell |     Content Cell      |
+| Content Cell        |         Content Cell |     Content Cell      |
+
+```
+
+Rendered:
+
+| Left aligned Header | Right aligned Header | Center aligned Header |
+| :------------------ | -------------------: | :-------------------: |
+| Content Cell        |         Content Cell |     Content Cell      |
+| Content Cell        |         Content Cell |     Content Cell      |
+
+## Code Blocks
+
+Markup:
+
+````
+```js showLineNumbers
+// This is a javascript code block
+const ls = window.localStorage;
+ls.setItem("awesome", "blog-template");
+```
+````
+
+Rendered:
+
+```js showLineNumbers
+// This is a javascript code block
+const ls = window.localStorage;
+ls.setItem("awesome", "blog-template");
+```
+
+### Code block with title and caption
+
+Markup:
+
+````
+
+```tsx title="app/components/mdx-content.tsx"
+import mdxComponents from "@/components/mdx-components";
+import { useMDXComponent } from "next-contentlayer/hooks";
+
+type MDXContentProps = {
+  code: string;
+};
+
+const MDXContent = ({ code }: MDXContentProps) => {
+  const Content = useMDXComponent(code);
+  return <Content components={mdxComponents} />;
+};
+
+export default MDXContent;
+```
+````
+
+Rendered:
+
+```tsx title="app/components/mdx-content.tsx"
+import mdxComponents from "@/components/mdx-components";
+import { useMDXComponent } from "next-contentlayer/hooks";
+
+type MDXContentProps = {
+  code: string;
+};
+
+const MDXContent = ({ code }: MDXContentProps) => {
+  const Content = useMDXComponent(code);
+  return <Content components={mdxComponents} />;
+};
+
+export default MDXContent;
+```
+
+The file icon in the code titles are based on the language provided to the code block.
+
+#### Code with caption below:
+
+Markup:
+
+````
+```js caption="Caption for above code block"
+// This is a javascript code block
+const ls = window.localStorage;
+ls.setItem("awesome", "blog-template");
+```
+````
+
+Rendered:
+
+```js caption="Caption for above code block"
+// This is a javascript code block
+const ls = window.localStorage;
+ls.setItem("awesome", "blog-template");
+```
+
+### Highlighting line number in code blocks
+
+Markup;
+
+````
+```tsx {2}
+// This is a javascript code block
+const ls = window.localStorage;
+ls.setItem("awesome", "blog-template");
+```
+````
+
+Rendered:
+
+```tsx {2}
+// This is a javascript code block
+const ls = window.localStorage;
+ls.setItem("awesome", "blog-template");
+```
+
+Range highlighting:
+
+Markup:
+
+````
+
+```js title="page.tsx" {5-10}
+// This is a javascript code block
+const ls = window.localStorage;
+ls.setItem("awesome", "blog-template");
+
+try {
+  const res = await fetch(process.env.API_URL);
+} catch (e) {
+  // this is what peak error handling looks like
+  console.log(e);
+}
+```
+
+````
+
+Rendered:
+
+```js title="page.tsx" {5-10}
+// This is a javascript code block
+const ls = window.localStorage;
+ls.setItem("awesome", "blog-template");
+
+try {
+  const res = await fetch(process.env.API_URL);
+} catch (e) {
+  // this is what peak error handling looks like
+  console.log(e);
+}
+```
+
+### Inline code
+
+Markup:
+
+```
+This is an inline code with syntax highlighting: `code(){:js}`
+```
+
+Rendered:
+
+This is an inline code with syntax highlighting: `code(){:js}`
+
+This is a normal inline code `code()`
+
+## Images
+
+Markup:
+
+```
+![this is an external image](https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/Kp4WW9nvbo5JexN1MMuN.jpg)
+```
+
+Rendered:
+
+![this is an external image](https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/Kp4WW9nvbo5JexN1MMuN.jpg)
+
+## Text styles
+
+Markup:
+
+```
+**This is a bold text**
+
+_This is an italic text_
+
+**_This is a strong italic text_**
+
+~~This is a strikethrough text~~
+
+Below is a seperator
+
+---
+```
+
+Rendered:
+
+**This is a bold text**
+
+_This is an italic text_
+
+**_This is a strong italic text_**
+
+~~This is a strikethrough text~~
+
+Below is a seperator
+
+---
+
+Markup:
+
+```
+- [ ] An uncompleted task
+- [x] A completed task
+```
+
+Rendered:
+
+- [ ] An uncompleted task
+- [x] A completed task

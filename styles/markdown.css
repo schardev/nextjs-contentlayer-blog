@@ -1,0 +1,163 @@
+/* tailwind generates prose classes that has specificity of (0,1,0), element-onlyselectors aren't enough to overwrite them, so we add `.prose` class */
+.prose {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    &:target {
+      @apply scroll-mt-24;
+    }
+
+    &:hover .anchor-link {
+      @apply opacity-100;
+    }
+  }
+
+  a {
+    @apply no-underline;
+
+    &:hover {
+      @apply underline underline-offset-[0.5ex];
+    }
+  }
+
+  .anchor-link {
+    @apply ml-2 text-[--tw-prose-link-inactive] opacity-0;
+    @apply transition-[opacity,color] duration-100;
+
+    &:hover {
+      @apply text-accent no-underline;
+    }
+
+    .icon-link::before {
+      @apply content-['#'];
+    }
+  }
+
+  img {
+    @apply rounded-global shadow-lg;
+  }
+
+  figure > figcaption {
+    @apply text-center italic font-medium text-[--tw-prose-quotes];
+  }
+
+  table {
+    @apply my-0;
+  }
+
+  thead {
+    @apply bg-[--tw-prose-th-bg];
+
+    th {
+      &:first-child {
+        @apply rounded-tl-[--tw-prose-border-radius];
+      }
+
+      &:last-child {
+        @apply rounded-tr-[--tw-prose-border-radius];
+      }
+    }
+  }
+
+  thead th,
+  tbody td {
+    @apply p-4 md:px-6;
+  }
+
+  code {
+    &::before,
+    &::after {
+      @apply content-[''];
+    }
+  }
+
+  pre > code {
+    @apply py-4;
+  }
+}
+
+/* NOTE: styles below should work regardless of whether they are used inside
+a prose class or not */
+
+/* remove dark theme code blocks in light mode and vice-versa */
+:root[data-theme="dark"] {
+  pre[data-theme="light"],
+  code[data-theme="light"],
+  [data-rehype-pretty-code-title][data-theme="light"],
+  [data-rehype-pretty-code-caption][data-theme="light"] {
+    @apply hidden;
+  }
+}
+
+:root[data-theme="light"] {
+  pre[data-theme="dark"],
+  code[data-theme="dark"],
+  [data-rehype-pretty-code-title][data-theme="dark"],
+  [data-rehype-pretty-code-caption][data-theme="dark"] {
+    @apply hidden;
+  }
+}
+
+code {
+  @apply text-[--color-code-fg] bg-[--color-code-bg] rounded-md;
+  @apply py-[0.25em] px-[0.45em];
+}
+
+pre > code {
+  @apply grid overflow-x-auto py-4 bg-[--color-pre-code-bg];
+
+  > [data-line] {
+    @apply pl-4 border-l-[length:--pre-code-line-highlight-border-width] border-l-transparent;
+  }
+
+  > [data-highlighted-line] {
+    @apply border-l-[--color-pre-code-line-highlight-border] border-l-[length:--pre-code-line-highlight-border-width];
+    @apply bg-[--color-pre-code-line-highlight];
+  }
+}
+
+/* code blocks with line numbers */
+pre > code[data-line-numbers] {
+  --_counter-width: 1ch;
+  counter-reset: line;
+  @apply px-0;
+
+  > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+    @apply inline-block w-[--_counter-width] mr-4 text-right text-inherit;
+  }
+
+  &[data-line-numbers-max-digits="2"] {
+    --_counter-width: 2ch;
+  }
+
+  &[data-line-numbers-max-digits="3"] {
+    --_counter-width: 3ch;
+  }
+
+  &[data-line-numbers-max-digits="4"] {
+    --_counter-width: 4ch;
+  }
+}
+
+[data-rehype-pretty-code-fragment] > pre {
+  @apply border border-[--color-pre-code-borders] p-0;
+}
+
+[data-rehype-pretty-code-title] {
+  @apply text-[--color-pre-code-title-fg] bg-[--color-pre-code-title-bg];
+  @apply border-t border-x border-[--color-pre-code-borders] rounded-t-global;
+  @apply px-4 py-2;
+
+  + pre {
+    @apply mt-0 rounded-t-none;
+  }
+}
+
+[data-rehype-pretty-code-caption] {
+  @apply text-center italic font-medium text-sm text-[--color-captions] mt-3;
+}
