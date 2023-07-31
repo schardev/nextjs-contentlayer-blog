@@ -1,0 +1,97 @@
+---
+title: TypeScript and JSX Part I - What is JSX?
+description: As of 2019, TypeScript has grown more and more popular as the programming language of choice for web developers. In this post series we'll be exploring how the TS compiler treats JSX and how it all interacts with the most popular framework that utilizes JSX - React.
+date: "2019-01-25"
+tags:
+  - Typescript
+  - React
+image: https://www.freecodecamp.org/news/content/images/size/w2000/2022/10/typescript-cover.jpg
+---
+
+First things first-- how does JSX work? Here are a couple of examples of JSX:
+
+```jsx
+// a native 'span' element with some text children
+const mySpan = <span>Hello world!</span>;
+
+// a custom 'CustomSpan' element with some props and some children
+const myCustomSpan = (
+  <CustomSpan key="_myspan" bold color="red">
+    Hello world!
+  </CustomSpan>
+);
+
+// a native, self-closing 'input' element without any children
+const myInput = <input />;
+
+// a custom 'Container' element with multiple children
+const myWidget = (
+  <Container>
+    I am a widget
+    <Button>Click me!</Button>
+  </Container>
+);
+```
+
+JSX is a non-ECMAScript compliant syntax addition to JavaScript, which is supported by TypeScript through the --jsx compiler flag. If you're a React developer, then JSX is actually just syntactic sugar that will compile down to this (if you use the TypeScript compiler):
+
+```jsx
+// a native 'span' element with some text children
+const mySpan = React.createElement("span", null, "Hello world!");
+
+// a custom 'CustomSpan' element with some props and some children
+const myCustomSpan = React.createElement(
+  CustomSpan,
+  { key: "myspan", bold: true, color: "red" },
+  "Hello world!"
+);
+
+// a native, self-closing 'input' element without any children
+const myInput = React.createElement("input", null);
+
+// a custom 'Container' element with multiple children
+const myWidget = React.createElement(
+  Container,
+  { onClick: console.log },
+  "I am a widget",
+  React.createElement(Button, null, "Click me!")
+);
+```
+
+This is already quite a lot to dissect; let's note some interesting things in this transform:
+
+- The entire JSX expression is turned into a call against a function called `React.createElement`. This is actually why you always need to `import React from 'react'{:js}` if you use JSX, even though the variable `React` never actually gets used in your code!
+- The tag name in the JSX expression is moved to the first parameter of the function call.
+  - If the tag name begins with an uppercase character, or (not shown in the example) it is a property access (like `<foo.bar />{:jsx}`), it is left as is.
+  - If the tag name is a single lowercase word, it is turned into a string literal (`input -> 'input'`)
+    'input')
+- All of the props (or attributes, as they are called in the abstract syntax tree) are transformed into an object that is moved to the second parameter of the function call, with some special syntax to note:
+  - If no props are passed in, the value is not an empty object, nor `undefined`, but just `null`.
+  - Shorthand attribute syntax (like the `bold` prop in `myInput`), is transformed into just an objet property with the value true.
+  - Even though React treats key and `ref` as special, they are still (as far as syntax is concerned) regular attributes in the transform.
+  - The order of the object's properties is the same order that they appear as attributes in the JSX expression.
+- Children are transformed if needed (if they are also JSX), and are placed in the order that they appear, as the rest of the arguments to the function call.
+  - React has a specific behavior where a single child in JSX appears as just that node in `props.children`, but as an array of nodes for multiple children. This is not enforced by the syntax or specification at all. In fact, Preact will always wrap children in an array regardless of how many there are, so that part is an implementation detail.
+
+That's really all there is to JSX syntax; at the end of the day it's just syntactic sugar for building nested function calls without hurting your brain.
+
+Why is it then, does the compiler know to use `React.createElement` as the function instead of something else? Turns out that you can change that to whatever you want! All you have to do is add either a comment at the top of your file or set a compiler flag:
+
+```js
+/* @jsx myCustomJsxFactory.produce */
+
+// your code here
+```
+
+```json title="tsconfig.json"
+// tsconfig.json
+{
+  "compilerOptions": { "jsxFactory": "myCustomJsxFactory.produce" }
+}
+```
+
+They do the same thing, and it just turns out that the default value is `React.createElement`.
+
+In the next posts in the series, we'll be exploring how TypeScript knows how typecheck against JSX syntax through a working example of building our own JSX factory function.
+
+_Hero image is from [freeCodeCamp](https://www.freecodecamp.org/news/typescript-for-react-developers/) and the original article is by Ferdy Budhidharma from [DEV](https://dev.to/ferdaber/typescript-and-jsx-part-i---what-is-jsx-3g8b)._

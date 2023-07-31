@@ -1,0 +1,95 @@
+---
+title: Introducing Starter Blog Template powered by Next.js, Tailwind CSS and Contentlayer
+description: A simple and minimalistic blog template built using the latest Next.js app router and Contentlayer.
+date: "2023-07-19"
+tags:
+  - Tailwind CSS
+  - Next.js
+  - Contentlayer
+image: /images/announcement-banner.png
+---
+
+## Motive
+
+I created this blog template just as a learning experience (and to get my hands dirty) with [Next.js' new shiny app router](https://nextjs.org/docs/app). I also wanted few specific reusable functionalities for my personal portfolio blog that I can also easily copy-paste to my other projects. Developing a generic template seemed like a better way of achieving that.
+
+## Features
+
+- Built with mobile-first approach
+- Highly customisable and flexible
+- Easier customisations using CSS variables
+- Keyboard accessible
+- Light and Dark mode support
+- Full type-safety
+- JSX in Markdown support
+- Near perfect Lighthouse scores
+- VS Code-like code highlighting with support for line numbers, line highlighting, words highlighting and inline code highlighting - powered by [Rehype Pretty Code](https://rehype-pretty-code.netlify.app/)
+- Github flavoured Markdown support
+- Separate pages for tags
+- Table of contents with highlighting of current section in view
+- Out-of-the-box SEO support
+- Dynamic open-graph (OG) image generation for posts
+- Automatic image optimisations using `next/image`
+- Uses latest bleeding edge technologies (yes, it's a feature) and best practices (I hope so)
+
+## Upcoming Features
+
+- Views counter
+- Cloudinary support
+
+## Features Not Supported (yet)
+
+- Comments
+- Search blogs posts / tags
+- Mermaid support
+- Multiple author support
+- Custom layout support
+
+## Theme
+
+Currently, I maintain two theme versions: `Slate` and `Stone`. You can make your own theme by customising and tweaking `config.css`.
+
+## Getting Started
+
+1. Clone the starter template:
+
+```bash
+git clone https://github.com/schardev/nextjs-contentlayer-blog
+
+# or using `gh`
+gh repo clone schardev/nextjs-contentlayer-blog
+```
+
+2. Add site information and relevant data to `lib/siteConfig.ts`.
+3. Add your blog posts to `content/blog` directory with proper front-matter (see the available fields [here](https://github.com/schardev/nextjs-contentlayer-blog/blob/main/schema/contentlayer/blog-post.ts))
+4. Build and deploy
+
+## Directory and File Structure
+
+| Directory/File      | Notes                                           |
+| ------------------- | ----------------------------------------------- |
+| `lib/siteConfig.ts` | contains config related to the site itself      |
+| `content/`          | directory where your MDX or Markdown file lives |
+| `schema/`           | contains schema related files                   |
+
+## Additional notes
+
+The code blocks support everything [`rehype-pretty-code`](https://rehype-pretty-code.netlify.app/) supports, with an added bonus for file type icon too.
+
+If you have worked with `next/image` before you know that working with external images is a pain in the ass as you have to manually inspect and pass width and height properties to the Image component. Sure you can use `fill` property but then you have to have a fixed aspect ratio and deal with z-indexes. However, as mentioned above, images are optimised by default, so you don't even need to pass width and height property explicitly for external images (**only works for static files**). It'll be automatically passed to the Image component which helps to avoid Cumulative Layout Shift (CLS).
+
+Styling is mostly controlled via CSS variables so it's pretty easy to tweak and configure.
+
+If you have any issues or feature requests then report them to the main repository.
+
+## Inspirations
+
+- [Stackoverflow Blog](https://stackoverflow.blog/)
+- [Web Bulletin](https://web-bulletin.vercel.app/)
+- [Tailwind Nextjs Starter Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)
+
+## Licence
+
+MIT © [Saurabh Charde](https://schar.dev)
+
+Feel free to use this in whatever projects you like. Make sure to star the [repo](https://github.com/schardev/nextjs-contentlayer-blog) so I can get that adrenaline pump going.
