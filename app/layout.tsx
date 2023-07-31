@@ -7,7 +7,10 @@ import "@/styles/global.css";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: config.title,
+  title: {
+    default: config.title,
+    template: `%s | ${config.title}`,
+  },
   description: config.description,
   authors: { name: config.author, url: config.socials.site },
   icons: {
@@ -37,6 +40,10 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: `${config.socials.twitter.replace("https://twitter.com/", "@")}`,
   },
 };
 
