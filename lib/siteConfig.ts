@@ -3,7 +3,7 @@ const siteConfig = {
   description:
     "A static minimalistic blog template powered by Next.js and Contentlayer.",
   author: "Saurabh Charde",
-  url: "https://nextjs-contentlayer-blog.vercel.app",
+  url: "https://nextjs-contentlayer-tailwind.vercel.app",
   siteImage: "/images/announcement-banner.png",
   socials: {
     github: "https://github.com/schardev",
