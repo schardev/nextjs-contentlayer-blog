@@ -49,7 +49,7 @@ const BlogCard = ({
         {isArrayNotEmpty(tags) && (
           <div className={cn("mt-4 flex gap-2 flex-wrap")}>
             {tags.map((tag) => (
-              <Link key={tag} href={`/blog/tags/${slugify(tag)}`}>
+              <Link key={tag} href={`/tags/${slugify(tag)}`}>
                 <PostTag>{tag}</PostTag>
               </Link>
             ))}

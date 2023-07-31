@@ -10,7 +10,7 @@ const RenderPosts = ({ posts }: { posts: BlogPost[] }) => {
       tags={post.tags}
       date={post.date}
       img={post.image}
-      href={`/blog/${post.slug}`}
+      href={`/${post.slug}`}
     />
   ));
 };

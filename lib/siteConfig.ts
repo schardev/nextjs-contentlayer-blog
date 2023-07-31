@@ -1,5 +1,5 @@
 const siteConfig = {
-  title: "Blog",
+  title: "Nextjs Contentlayer Blog",
   description:
     "A static minimalistic blog template powered by Next.js and Contentlayer.",
   author: "Saurabh Charde",
