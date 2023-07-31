@@ -1,0 +1,161 @@
+---
+title: An Approach to Lazy Loading Custom Elements
+description: We're fans of Custom Elements around here. Their design makes them particularly amenable to lazy loading, which can be a boon for performance.
+date: "2023-02-13"
+image: https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/wev-components-lazy.png
+tags:
+  - Custom Elements
+  - Lazy Loading
+---
+
+We’re fans of [Custom Elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) around here. Their design makes them [particularly amenable to lazy loading](https://web.dev/custom-elements-v1/#progressively-enhanced-html), which can be a boon for performance.
+
+Inspired by a colleague’s experiments, I recently set about writing a simple auto-loader: Whenever a custom element appears in the DOM, we wanna load the corresponding implementation if it’s not available yet. The browser then takes care of upgrading such elements from there on out.
+
+<Callout>
+  Chances are you won’t actually need all this; there’s usually a simpler
+  approach. Used deliberately, the techniques shown here might still be a useful
+  addition to your toolset.
+</Callout>
+
+For consistency, we want our auto-loader to be a custom element as well — which also means we can easily configure it via HTML. But first, let’s identify those unresolved custom elements, step by step:
+
+```js
+class AutoLoader extends HTMLElement {
+  connectedCallback() {
+    let scope = this.parentNode;
+    this.discover(scope);
+  }
+}
+customElements.define("ce-autoloader", AutoLoader);
+```
+
+Assuming we’ve loaded this module up-front (using async is ideal), we can drop a `<ce-autoloader>{:html}` element into the `<body>{:html}` of our document. That will immediately start the discovery process for all child elements of `<body>{:html}`, which now constitutes our root element. We could limit discovery to a subtree of our document by adding `<ce-autoloader>{:html}` to the respective container element instead — indeed, we might even have multiple instances for different subtrees.
+
+Of course, we still have to implement that discover method (as part of the AutoLoader class above):
+
+```js
+discover(scope) {
+  let candidates = [scope, ...scope.querySelectorAll("*")];
+  for(let el of candidates) {
+    let tag = el.localName;
+    if(tag.includes("-") && !customElements.get(tag)) {
+      this.load(tag);
+    }
+  }
+}
+```
+
+Here we check our root element along with every single descendant `(*)`. If it’s a custom element — as indicated by hyphenated tags — but not yet upgraded, we’ll attempt to load the corresponding definition. Querying the DOM that way might be expensive, so we should be a little careful. We can alleviate load on the main thread by deferring this work:
+
+```js
+connectedCallback() {
+  let scope = this.parentNode;
+  requestIdleCallback(() => {
+    this.discover(scope);
+  });
+}
+```
+
+[`requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestIdleCallback) is not universally supported yet, but we can use [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) as a fallback:
+
+```js
+let defer = window.requestIdleCallback || requestAnimationFrame;
+
+class AutoLoader extends HTMLElement {
+  connectedCallback() {
+    let scope = this.parentNode;
+    defer(() => {
+      this.discover(scope);
+    });
+  }
+  // ...
+}
+```
+
+Now we can move on to implementing the missing load method to dynamically inject a `<script>{:html}` element:
+
+```js
+load(tag) {
+  let el = document.createElement("script");
+  let res = new Promise((resolve, reject) => {
+    el.addEventListener("load", ev => {
+      resolve(null);
+    });
+    el.addEventListener("error", ev => {
+      reject(new Error("failed to locate custom-element definition"));
+    });
+  });
+  el.src = this.elementURL(tag);
+  document.head.appendChild(el);
+  return res;
+}
+
+elementURL(tag) {
+  return `${this.rootDir}/${tag}.js`;
+}
+```
+
+Note the hard-coded convention in elementURL. The src attribute’s URL assumes there’s a directory where all custom element definitions reside (e.g. `<my-widget>{:html}` -> `/components/my-widget.js`). We could come up with more elaborate strategies, but this is good enough for our purposes. Relegating this URL to a separate method allows for project-specific subclassing when needed:
+
+```js
+class FancyLoader extends AutoLoader {
+  elementURL(tag) {
+    // fancy logic
+  }
+}
+```
+
+Either way, note that we’re relying on `this.rootDir{:js}`. This is where the aforementioned configurability comes in. Let’s add a corresponding getter:
+
+```js
+get rootDir() {
+  let uri = this.getAttribute("root-dir");
+  if(!uri) {
+    throw new Error("cannot auto-load custom elements: missing `root-dir`");
+  }
+  if(uri.endsWith("/")) { // remove trailing slash
+    return uri.substring(0, uri.length - 1);
+  }
+  return uri;
+}
+```
+
+<Callout>
+  You might be thinking of observedAttributes now, but that doesn’t really make
+  things easier. Plus updating root-dir at runtime seems like something we’re
+  never going to need.
+</Callout>
+
+Now we can — and must — configure our elements directory: `<ce-autoloader root-dir="/components">{:html}`.
+
+With this, our auto-loader can do its job. Except it only works once, for elements that already exist when the auto-loader is initialized. We’ll probably want to account for dynamically added elements as well. That’s where [`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) comes into play:
+
+```js
+connectedCallback() {
+  let scope = this.parentNode;
+  defer(() => {
+    this.discover(scope);
+  });
+  let observer = this._observer = new MutationObserver(mutations => {
+    for(let { addedNodes } of mutations) {
+      for(let node of addedNodes) {
+        defer(() => {
+          this.discover(node);
+        });
+      }
+    }
+  });
+  observer.observe(scope, { subtree: true, childList: true });
+}
+
+disconnectedCallback() {
+  this._observer.disconnect();
+}
+```
+
+This way, the browser notifies us whenever a new element appears in the DOM — or rather, our respective subtree — which we then use to restart the discovery process. (You might argue we’re re-inventing custom elements here, and you’d be kind of correct.)
+
+Our auto-loader is now fully functional. Future enhancements might look into potential race conditions and investigate optimizations. But chances are this is good enough for most scenarios. Let me know in the comments if you have a different approach and we can compare notes!
+
+_Original article by Frederik Dohr on [CSS Tricks](https://css-tricks.com/an-approach-to-lazy-loading-custom-elements/)._
