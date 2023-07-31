@@ -13,7 +13,7 @@ const PaginatorButton = ({
 }) => {
   return (
     <Link
-      href={`/blog/page/${goTo}`}
+      href={`/page/${goTo}`}
       className={cn("flex gap-2 text-sm p-2", disable && "hidden")}>
       {children}
     </Link>
@@ -39,7 +39,7 @@ const PostPaginatorNav = ({
           return (
             <li key={pageNumber}>
               <Link
-                href={`/blog/page/${pageNumber}`}
+                href={`/page/${pageNumber}`}
                 className={cn(
                   "w-10 h-10 flex justify-center items-center rounded-md",
                   currentPage === pageNumber &&

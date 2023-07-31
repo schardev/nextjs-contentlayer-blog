@@ -51,7 +51,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
         "my-10 lg:my-16 xl:my-20 [--_space:2.5rem] lg:[--_space:5rem]"
       )}>
       <Link
-        href="/blog"
+        href="/"
         className={cn(
           "inline-flex gap-1 items-center text-accent text-sm",
           "-ml-1 mb-[--_space] font-medium",
@@ -84,7 +84,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
           {isArrayNotEmpty(post.tags) && (
             <div className={cn("flex gap-2 flex-wrap not-prose")}>
               {post.tags.map((tag) => (
-                <Link key={tag} href={`/blog/tags/${slugify(tag)}`}>
+                <Link key={tag} href={`/tags/${slugify(tag)}`}>
                   <PostTag>{tag}</PostTag>
                 </Link>
               ))}

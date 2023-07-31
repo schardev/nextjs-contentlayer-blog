@@ -5,14 +5,7 @@ import PostPaginator from "@/components/post-paginator";
 import RenderPosts from "@/components/render-posts";
 import { allSortedBlogs } from "@/lib/contentlayer";
 import config from "@/lib/siteConfig";
-import { cn, generateCommonMeta } from "@/lib/utils";
-import { Metadata } from "next";
-
-export const metadata: Metadata = generateCommonMeta({
-  title: "Blog",
-  description: "Latest blog posts",
-  image: "/api/og",
-});
+import { cn } from "@/lib/utils";
 
 const Page = () => {
   if (!allSortedBlogs.length)
@@ -47,7 +40,7 @@ const Page = () => {
             tags={latestPost.tags}
             date={latestPost.date}
             img={latestPost.image}
-            href={`/blog/${latestPost.slug}`}
+            href={`/${latestPost.slug}`}
             className={cn(
               // If sufficient blogs are present then make the most recent one
               // stand out from the rest
