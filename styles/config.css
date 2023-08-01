@@ -42,6 +42,7 @@
   --color-pre-code-borders: var(--color-borders);
   --color-pre-code-title-bg: var(--color-th-bg);
   --color-pre-code-title-fg: theme(colors.stone.950);
+  --color-pre-code-highlighted-chars: theme(colors.stone.300/80%);
   --color-pre-code-line-highlight: theme(colors.amber.100/50%);
   --color-pre-code-line-highlight-border: theme(colors.amber.300);
 }
@@ -83,6 +84,7 @@
   --color-pre-code-borders: var(--color-borders);
   --color-pre-code-title-bg: var(--color-th-bg);
   --color-pre-code-title-fg: theme(colors.stone.200);
+  --color-pre-code-highlighted-chars: theme(colors.stone.500/50%);
   --color-pre-code-line-highlight: theme(colors.amber.500/10%);
   --color-pre-code-line-highlight-border: theme(colors.amber.600/50%);
 }
