@@ -11,43 +11,61 @@ image: /images/announcement-banner.png
 
 ## Motive
 
-I created this blog template just as a learning experience (and to get my hands dirty) with [Next.js' new shiny app router](https://nextjs.org/docs/app). I also wanted few specific reusable functionalities for my personal portfolio blog that I can also easily copy-paste to my other projects. Developing a generic template seemed like a better way of achieving that.
+I created this blog template as a learning experience (and to get my hands dirty) with [Next.js' new shiny app router](https://nextjs.org/docs/app). I also wanted few specific reusable functionalities for my personal portfolio blog that I can also easily copy-paste to my other projects. Developing a generic template seemed like a better way of achieving that.
 
 ## Features
 
-- Built with mobile-first approach
-- Highly customisable and flexible
-- Easier customisations using CSS variables
-- Keyboard accessible
-- Light and Dark mode support
-- Full type-safety
-- JSX in Markdown support
-- Near perfect Lighthouse scores
-- VS Code-like code highlighting with support for line numbers, line highlighting, words highlighting and inline code highlighting - powered by [Rehype Pretty Code](https://rehype-pretty-code.netlify.app/)
-- Github flavoured Markdown support
-- Separate pages for tags
-- Table of contents with highlighting of current section in view
-- Out-of-the-box SEO support
-- Dynamic open-graph (OG) image generation for posts
-- Automatic image optimisations using `next/image`
-- Uses latest bleeding edge technologies (yes, it's a feature) and best practices (I hope so)
+- **Mobile-First Approach**: Built with a mobile-first mindset, the template ensures your blog looks fantastic on any device.
 
-## Upcoming Features
+- **Highly Customizable**: Flexibility is key! The template offers extensive customizability, allowing you to tailor it to your unique style and preferences.
 
-- Views counter
-- Cloudinary support
+- **CSS Variables for Easier Customizations**: Making changes to your blog's appearance becomes a breeze with the help of CSS variables.
 
-## Features Not Supported (yet)
+- **Keyboard Accessibility**: Ensuring an inclusive experience, the template is keyboard accessible.
 
-- Comments
-- Search blogs posts / tags
-- Mermaid support
-- Multiple author support
-- Custom layout support
+- **Light and Dark Mode Support**: Embrace the latest design trends by offering both light and dark mode options.
+
+- **Full Type-Safety**: Rest assured that your codebase will be free of type-related headaches.
+
+- **JSX in Markdown Support**: Unleash the power of JSX right within your Markdown content.
+
+- **Near Perfect Lighthouse Scores**: Your blog will be optimized for blazing-fast performance and excellent user experience.
+
+- **VS Code-like Code Highlighting**: Code snippets are displayed beautifully with line numbers, line highlighting, words highlighting, and inline code highlighting, powered by [Rehype Pretty Code](https://rehype-pretty-code.netlify.app/).
+
+- **Github-Flavored Markdown Support**: Write your content in familiar Markdown, including GitHub-flavored goodness.
+
+- **Separate Pages for Tags**: Easily categorize your posts with separate tag pages.
+
+- **Out-of-the-Box SEO Support**: Ensure your blog ranks well on search engines with built-in SEO features.
+
+- **Dynamic Open-Graph (OG) Image Generation**: Each post will have a sleek OG image automatically generated.
+
+- **Automatic Image Optimizations**: The template takes care of image optimizations using `next/image` for optimal performance.
+
+- **Bleeding Edge Technologies and Best Practices**: Stay ahead of the curve with the latest technologies and industry best practices (I hope so).
+
+## Features Not Implemented (yet)
+
+Although packed with awesome features, there are some ideas on the horizon that I'm eager to implement in future updates:
+
+- **Views Counter / Analytics**: Keep track of your blog's popularity and engagement.
+
+- **Cloudinary Support**: Easily manage and optimize your images with Cloudinary integration.
+
+- **Comments**: Foster discussions and interactions by adding comment functionality.
+
+- **Search Blog Posts / Tags**: Help users find specific content with a powerful search feature.
+
+- **Mermaid Support**: Visualize data and concepts with the help of Mermaid charts.
+
+- **Author Support**: Properly attribute authors to each post.
+
+- **Custom Layout**: Create a unique layout for individual posts.
 
 ## Theme
 
-Currently, I maintain two theme versions: `Slate` and `Stone`. You can make your own theme by customising and tweaking `config.css`.
+The template comes with a default theme based on **Stone** color palette from Tailwind CSS. But don't worry, you have the freedom to create own theme by customising and tweaking `config.css`.
 
 ## Getting Started
 
@@ -61,35 +79,59 @@ gh repo clone schardev/nextjs-contentlayer-blog
 ```
 
 2. Add site information and relevant data to `lib/siteConfig.ts`.
-3. Add your blog posts to `content/blog` directory with proper front-matter (see the available fields [here](https://github.com/schardev/nextjs-contentlayer-blog/blob/main/schema/contentlayer/blog-post.ts))
-4. Build and deploy
+3. Add your blog posts to `content/blog` directory with proper front-matter (see available fields [here](https://github.com/schardev/nextjs-contentlayer-blog/blob/main/schema/contentlayer/blog-post.ts))
+4. Build your blog with:
+
+```sh
+pnpm build
+```
+
+5. Deploy to your hosting provider 🎉
+
+Starting a development server isn't different either, just run:
+
+```bash
+pnpm dev
+```
+
+Now open `http://localhost:3000` to view changes to your blog as it happens.
 
 ## Directory and File Structure
 
-| Directory/File      | Notes                                           |
-| ------------------- | ----------------------------------------------- |
-| `lib/siteConfig.ts` | contains config related to the site itself      |
-| `content/`          | directory where your MDX or Markdown file lives |
-| `schema/`           | contains schema related files                   |
+| Directory/File           | Notes                                                                                                           |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| `app/`                   | Defines your site/blog's routes                                                                                 |
+| `components/`            | All react component code lives here                                                                             |
+| `content/`               | Directory where your MDX or Markdown file lives                                                                 |
+| `public/`                | Static assets goes here (e.g., put all your images inside `public/images` and fonts inside `public/fonts` etc)  |
+| `styles/`                | Find all styling files here                                                                                     |
+| `schema/`                | Contains schema-related files                                                                                   |
+| `contentlayer.config.ts` | [Contentlayer](https://www.contentlayer.dev/) configuration file (you can change your `content` directory here) |
+| `lib/siteConfig.ts`      | Holds config related to the site itself                                                                         |
 
 ## Additional notes
 
-The code blocks support everything [`rehype-pretty-code`](https://rehype-pretty-code.netlify.app/) supports, with an added bonus for file type icon too.
+- If you have worked with [`next/image`](https://nextjs.org/docs/app/api-reference/components/image) before you know that working with external images is a pain in the ass, as you have to manually inspect and pass width and height properties to the `<Image/>{:jsx}` component. Sure you can use `fill` property but then you have to have a fixed aspect ratio and/or deal with z-indexes. However, working with external images is now a breeze: use the custom `<Image/>{:jsx}` component from the `components/` directory that takes care of all of it. No more manual width and height hassles, as image optimizations are automatically handled.
 
-If you have worked with `next/image` before you know that working with external images is a pain in the ass as you have to manually inspect and pass width and height properties to the Image component. Sure you can use `fill` property but then you have to have a fixed aspect ratio and deal with z-indexes. However, as mentioned above, images are optimised by default, so you don't even need to pass width and height property explicitly for external images (**only works for static files**). It'll be automatically passed to the Image component which helps to avoid Cumulative Layout Shift (CLS).
+- Additionally, code blocks support everything [`rehype-pretty-code`](https://rehype-pretty-code.netlify.app/) supports. You even get the bonus of file type icons! You can also extend or customize the default file type icons from [here](https://github.com/schardev/nextjs-contentlayer-blog/blob/main/components/brand-icon.tsx).
 
-Styling is mostly controlled via CSS variables so it's pretty easy to tweak and configure.
+- As mentioned already, styling is mostly controlled via CSS variables so it's pretty easy to tweak and configure. See [`config.css`](https://github.com/schardev/nextjs-contentlayer-blog/blob/main/styles/config.css).
 
-If you have any issues or feature requests then report them to the main repository.
+<Callout>
+Image optimisations using custom `<Image/>{:jsx}` component only works if your blog is statically generated. **Do not use it as a client or server component.**
+</Callout>
+
+If you encounter any issues or have any feature requests, feel free to report them in the [main repository](https://github.com/schardev/nextjs-contentlayer-blog/tree/main).
 
 ## Inspirations
 
-- [Stackoverflow Blog](https://stackoverflow.blog/)
-- [Web Bulletin](https://web-bulletin.vercel.app/)
 - [Tailwind Nextjs Starter Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)
+- [Stackoverflow Blog](https://stackoverflow.blog/)
+- [Material UI Blog](https://mui.com/blog/)
+- [Web Bulletin](https://web-bulletin.vercel.app/)
 
 ## Licence
 
 MIT © [Saurabh Charde](https://schar.dev)
 
-Feel free to use this in whatever projects you like. Make sure to star the [repo](https://github.com/schardev/nextjs-contentlayer-blog) so I can get that adrenaline pump going.
+Feel free to use this in whatever projects you like. Make sure to star the [repo](https://github.com/schardev/nextjs-contentlayer-blog) if you like it.
