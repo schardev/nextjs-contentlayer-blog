@@ -161,3 +161,7 @@ pre > code[data-line-numbers] {
 [data-rehype-pretty-code-caption] {
   @apply text-center italic font-medium text-sm text-[--color-captions] mt-3;
 }
+
+[data-highlighted-chars] {
+  @apply bg-[--color-pre-code-highlighted-chars] p-[0.2em] rounded-md;
+}

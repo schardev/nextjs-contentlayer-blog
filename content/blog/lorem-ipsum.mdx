@@ -322,12 +322,58 @@ try {
 }
 ```
 
+### Highlighting words in code blocks
+
+Markup;
+
+````
+```tsx /title/1-2,4
+export const generateCommonMeta = (meta: {
+  title: string;
+  description: string;
+  image?: string;
+}): Metadata => {
+  return {
+    title: meta.title,
+    description: meta.description,
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      images: [meta.image || config.siteImage],
+    },
+  };
+};
+```
+````
+
+Rendered:
+
+```tsx /title/1-2,4
+export const generateCommonMeta = (meta: {
+  title: string;
+  description: string;
+  image?: string;
+}): Metadata => {
+  return {
+    title: meta.title,
+    description: meta.description,
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      images: [meta.image || config.siteImage],
+    },
+  };
+};
+```
+
 ### Inline code
 
 Markup:
 
 ```
 This is an inline code with syntax highlighting: `code(){:js}`
+
+This is a normal inline code `code()`
 ```
 
 Rendered:
