@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:contentlayer": "contentlayer build",
     "start": "next start",
     "lint": "next lint && prettier --check .",
     "typecheck": "tsc --noEmit",

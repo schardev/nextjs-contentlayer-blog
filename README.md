@@ -132,4 +132,3 @@ If you encounter any issues or have any feature requests, feel free to report th
 MIT © [Saurabh Charde](https://schar.dev)
 
 Feel free to use this in whatever projects you like. Make sure to star the [repo](https://github.com/schardev/nextjs-contentlayer-blog) if you like it.
-
