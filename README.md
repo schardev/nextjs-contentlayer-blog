@@ -1,10 +1,8 @@
 <div align="center">
   <img src="./public/images/announcement-banner.png">
   <h1>Next.js Tailwind Contentlayer Blog </h1>
-  <a href="https://github.com/schardev/
-nextjs-contentlayer-blog/actions/workflows/build.yml">
-    <img src="https://github.com/schardev/
-nextjs-contentlayer-blog/actions/workflows/build.yml/badge.svg">
+  <a href="https://github.com/schardev/nextjs-contentlayer-blog/actions/workflows/ci.yml">
+    <img src="https://github.com/schardev/nextjs-contentlayer-blog/actions/workflows/ci.yml/badge.svg">
   </a>
 </div>
 <p align="center">A simple and minimalistic blog template built using the latest Next.js app router and Contentlayer.</p>
