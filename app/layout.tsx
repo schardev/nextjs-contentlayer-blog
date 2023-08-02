@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     ],
     // apple: "/apple-touch-icon.png",
   },
+  metadataBase: new URL(config.url),
   openGraph: {
     type: "website",
     title: {
