@@ -19,7 +19,7 @@ const PostTag = ({ children }: { children: string }) => {
 
   return (
     <p className={cn("tag", tagColor)}>
-      <span>{children}</span>
+      <span className="align-middle">{children}</span>
     </p>
   );
 };
