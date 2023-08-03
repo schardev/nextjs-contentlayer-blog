@@ -20,8 +20,42 @@ const getStreamImageSize = async (stream: IncomingMessage) => {
       // Not enough buffer to determine sizes yet
     }
   }
+};
 
-  return sizeOf(Buffer.concat(chunks));
+const fetchImageSizeFromUrl = async (imageUrl: string) => {
+  // Not sure if this is the best way to do it, but it works so ...
+  try {
+    const imageSize = await new Promise<ISizeCalculationResult>(
+      (resolve, reject) =>
+        https
+          .get(imageUrl, async (stream) => {
+            const size = await getStreamImageSize(stream);
+            if (size) {
+              resolve(size);
+            } else {
+              reject({
+                reason: `Error while resolving external image size with src: ${imageUrl}`,
+              });
+            }
+          })
+          .on("error", (e) => {
+            reject({ reason: e });
+          })
+    );
+    return imageSize;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const fetchImageSizeFromFile = async (imagePath: string) => {
+  try {
+    const img = await readFile(imagePath);
+    return sizeOf(img);
+  } catch (error) {
+    console.log(`Error while reading image with path: ${imagePath}`);
+    console.error(error);
+  }
 };
 
 const Image = async ({
@@ -35,30 +69,21 @@ const Image = async ({
   const imgProps = { src, quality, ...restProps };
   let Img: typeof NextImage | string = "img";
 
-  try {
-    let size: ISizeCalculationResult | null = null;
+  let size: ISizeCalculationResult | undefined;
 
-    if (isPublicImage) {
-      const img = await readFile(path.join("public", src));
-      size = sizeOf(img);
-    }
+  if (isPublicImage) {
+    size = await fetchImageSizeFromFile(path.join("public", src));
+  }
 
-    if (isExternalImage) {
-      size = await new Promise((resolve) => {
-        https.get(src, async (stream) => {
-          resolve(await getStreamImageSize(stream));
-        });
-      });
-    }
+  if (isExternalImage) {
+    size = await fetchImageSizeFromUrl(src);
+  }
 
-    if (size) {
-      const { width, height } = size;
-      imgProps.width = width;
-      imgProps.height = height;
-      Img = NextImage;
-    }
-  } catch (error) {
-    console.log(error);
+  if (size) {
+    const { width, height } = size;
+    imgProps.width = width;
+    imgProps.height = height;
+    Img = NextImage;
   }
 
   return <Img {...imgProps} />;
