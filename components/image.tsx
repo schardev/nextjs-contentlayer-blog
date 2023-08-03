@@ -44,8 +44,10 @@ const Image = async ({
     }
 
     if (isExternalImage) {
-      https.get(src, async (stream) => {
-        size = await getStreamImageSize(stream);
+      size = await new Promise((resolve) => {
+        https.get(src, async (stream) => {
+          resolve(await getStreamImageSize(stream));
+        });
       });
     }
 
