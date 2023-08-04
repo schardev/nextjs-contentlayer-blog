@@ -27,7 +27,7 @@
   "devDependencies": {
     "@icons-pack/react-simple-icons": "^8.0.1",
     "@tailwindcss/typography": "^0.5.9",
-    "@types/mdast": "^3.0.12",
+    "@types/mdast": "^4.0.0",
     "@types/mdx": "^2.0.5",
     "@types/node": "^18.17.1",
     "@types/react": "^18.2.17",
