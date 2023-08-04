@@ -40,7 +40,7 @@ const fetchImageSizeFromUrl = async (imageUrl: string) => {
           })
           .on("error", (e) => {
             reject({ reason: e });
-          })
+          }),
     );
     return imageSize;
   } catch (error) {

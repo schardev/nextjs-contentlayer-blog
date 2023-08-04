@@ -21,7 +21,7 @@ const ThemeToggle = () => {
         aria-label="Theme Toggle"
         className={cn(
           "text-sm align-middle p-2 rounded-md",
-          "data-[state=open]:bg-background-secondary hover:bg-background-secondary"
+          "data-[state=open]:bg-background-secondary hover:bg-background-secondary",
         )}>
         {resolvedTheme === "dark" ? <Moon /> : <SunLight />}
       </DropdownMenuTrigger>
@@ -31,7 +31,7 @@ const ThemeToggle = () => {
         className={cn(
           "z-20",
           "data-[state=open]:animate-slide-up-fade",
-          "data-[state=closed]:animate-slide-down-fade"
+          "data-[state=closed]:animate-slide-down-fade",
         )}>
         <DropdownMenuRadioGroup
           value={theme}
@@ -39,7 +39,7 @@ const ThemeToggle = () => {
           className={cn(
             "[&>*]:capitalize",
             "bg-background-secondary p-1 rounded-md border shadow-md border-borders",
-            "min-w-[120px]"
+            "min-w-[120px]",
           )}>
           {themes.map((theme) => (
             <DropdownMenuRadioItem
@@ -47,7 +47,7 @@ const ThemeToggle = () => {
               value={theme}
               className={cn(
                 "px-2 py-1 cursor-pointer rounded-md transition-colors",
-                "hover:bg-background-tertiary hover:outline-none"
+                "hover:bg-background-tertiary hover:outline-none",
               )}>
               {theme}
             </DropdownMenuRadioItem>

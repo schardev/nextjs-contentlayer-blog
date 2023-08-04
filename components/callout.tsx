@@ -34,7 +34,7 @@ const Callout = ({ children, className, variant = "note" }: CalloutProps) => {
       className={cn(
         "not-prose p-4 md:p-6 lg:p-8 my-4 rounded-global",
         styles,
-        className
+        className,
       )}>
       <p className="flex gap-2 items-center pb-4">
         <Icon />

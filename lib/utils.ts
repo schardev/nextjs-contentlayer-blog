@@ -10,7 +10,7 @@ export const cn = (...classNames: ClassValue[]) => {
 
 export const formatDate = (
   date: string | Date,
-  dateStyle: Intl.DateTimeFormatOptions["dateStyle"] = "medium"
+  dateStyle: Intl.DateTimeFormatOptions["dateStyle"] = "medium",
 ) => {
   if (typeof date === "string") date = new Date(date);
   return Intl.DateTimeFormat("en-US", { dateStyle: dateStyle }).format(date);

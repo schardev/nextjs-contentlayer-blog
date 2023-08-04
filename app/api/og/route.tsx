@@ -4,7 +4,7 @@ import { ImageResponse } from "next/server";
 export const runtime = "edge";
 
 const fontBold = fetch(
-  new URL("../../../public/fonts/Biotif-Bold.woff", import.meta.url)
+  new URL("../../../public/fonts/Biotif-Bold.woff", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 export async function GET(request: Request) {
@@ -85,6 +85,6 @@ export async function GET(request: Request) {
           style: "normal",
         },
       ],
-    }
+    },
   );
 }

@@ -8,7 +8,7 @@ type LinkProps = React.ComponentPropsWithoutRef<"a"> & {
 
 const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
   { children, showIcon = false, href = "", ...restProps },
-  forwardedRef
+  forwardedRef,
 ) {
   // TODO: use regex instead of `startWith`
   const isRouterLink = href.startsWith("/");

@@ -48,7 +48,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
   return (
     <main
       className={cn(
-        "my-10 lg:my-16 xl:my-20 [--_space:2.5rem] lg:[--_space:5rem]"
+        "my-10 lg:my-16 xl:my-20 [--_space:2.5rem] lg:[--_space:5rem]",
       )}>
       <Link
         href="/blog"
@@ -56,7 +56,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
           "inline-flex gap-1 items-center text-accent text-sm",
           "-ml-1 mb-[--_space] font-medium",
           "hover:text-accent hover:no-underline",
-          "lg:text-base lg:leading-none"
+          "lg:text-base lg:leading-none",
         )}>
         <NavArrowLeft />
         <span>Back to blog</span>
@@ -65,14 +65,14 @@ const Page = ({ params }: { params: { slug: string } }) => {
         className={cn(
           "flex flex-col-reverse gap-8 pb-[--_space]",
           "border-b border-b-borders",
-          "lg:flex-row [&>*]:flex-1"
+          "lg:flex-row [&>*]:flex-1",
         )}>
         <ProseLayout>
           <div
             className={cn(
               "not-prose text-foreground-secondary text-sm font-medium",
               "flex gap-6 flex-wrap mb-6 lg:mb-10",
-              "[&_svg]:text-xs [&>*]:flex [&>*]:gap-2"
+              "[&_svg]:text-xs [&>*]:flex [&>*]:gap-2",
             )}>
             <time dateTime={post.date}>
               <Calendar />
@@ -105,20 +105,20 @@ const Page = ({ params }: { params: { slug: string } }) => {
       <div
         className={cn(
           "mt-[--_space]",
-          "xl:flex xl:flex-row-reverse xl:justify-between"
+          "xl:flex xl:flex-row-reverse xl:justify-between",
         )}>
         {moreThanOneHeading && (
           <TocDesktop
             contents={post.headings}
             className={cn(
-              "hidden sticky top-32 self-start flex-[0_0_25%] xl:block"
+              "hidden sticky top-32 self-start flex-[0_0_25%] xl:block",
             )}
           />
         )}
         <ProseLayout
           className={cn(
             "max-xl:mx-auto",
-            post.headings.length < 1 && "mx-auto"
+            post.headings.length < 1 && "mx-auto",
           )}>
           {moreThanOneHeading && (
             <TocMobile contents={post.headings} className="xl:hidden" />

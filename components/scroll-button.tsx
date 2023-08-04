@@ -25,7 +25,7 @@ const ScrollButton = () => {
         "translate-y-4 transition-[transform,opacity] duration-300",
         scrolled
           ? "opacity-60 translate-y-0 hover:opacity-100"
-          : "opacity-0 pointer-events-none"
+          : "opacity-0 pointer-events-none",
       )}
       aria-label="Scroll to top"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>

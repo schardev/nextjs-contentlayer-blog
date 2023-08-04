@@ -59,7 +59,7 @@ export default function RootLayout({
         className={cn(
           fontSans.variable,
           "text-foreground-primary bg-background min-h-screen font-sans",
-          "selection:bg-accent selection:text-white"
+          "selection:bg-accent selection:text-white",
         )}>
         <Header />
         {children}

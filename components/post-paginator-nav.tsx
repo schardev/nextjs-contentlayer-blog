@@ -43,7 +43,7 @@ const PostPaginatorNav = ({
                 className={cn(
                   "w-10 h-10 flex justify-center items-center rounded-md",
                   currentPage === pageNumber &&
-                    "bg-background-secondary border border-borders pointer-events-none"
+                    "bg-background-secondary border border-borders pointer-events-none",
                 )}>
                 {pageNumber}
               </Link>

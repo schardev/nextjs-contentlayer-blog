@@ -27,7 +27,7 @@ export const TocMobile = ({ contents, className }: TocProps) => {
             "flex gap-2 items-center text-sm text-[--color-body]",
             "bg-[--color-toc-button-bg] border border-borders",
             "py-2 pr-[0.5em] pl-[1em] rounded-global font-medium",
-            "[&>svg]:data-[state=open]:rotate-90 [&>svg]:text-xs"
+            "[&>svg]:data-[state=open]:rotate-90 [&>svg]:text-xs",
           )}>
           <span>On this page</span>
           <NavArrowRight />
@@ -43,14 +43,14 @@ export const TocMobile = ({ contents, className }: TocProps) => {
             "w-[calc(var(--radix-dropdown-menu-content-available-width)-var(--px-padding))]",
             "lg:w-fit xl:hidden",
             "data-[state=open]:animate-slide-up-fade",
-            "data-[state=closed]:animate-slide-down-fade"
+            "data-[state=closed]:animate-slide-down-fade",
           )}>
           <nav
             className={cn(
               "bg-[--color-toc-button-bg] text-[--color-body]",
               "border border-borders rounded-global p-4",
               "min-w-[50vw] max-h-[50vh] overflow-y-auto",
-              "max-xl:shadow-md"
+              "max-xl:shadow-md",
             )}>
             <ul>
               {contents.map((e) => {
@@ -90,7 +90,7 @@ const TocDesktop = ({ contents, className }: TocProps) => {
           }
         });
       },
-      { rootMargin: "0px 0px -70% 0px" }
+      { rootMargin: "0px 0px -70% 0px" },
     );
     allAnchorLinksRef.current.forEach((e) => observerRef.current?.observe(e));
 
@@ -115,7 +115,7 @@ const TocDesktop = ({ contents, className }: TocProps) => {
                     "block p-2 text-[--color-body] hover:text-accent px-4 py-2",
                     "border-l-2 border-l-borders",
                     "[&.active]:border-l-accent [&.active]:text-accent",
-                    hash === e.slug && "active"
+                    hash === e.slug && "active",
                   )}>
                   {e.text}
                 </Link>

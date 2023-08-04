@@ -38,7 +38,7 @@ const BlogCard = ({
         </p>
         <h3
           className={cn(
-            "font-medium text-xl md:text-2xl mb-2 hover:underline"
+            "font-medium text-xl md:text-2xl mb-2 hover:underline",
           )}>
           <Link href={href}>{title}</Link>
         </h3>

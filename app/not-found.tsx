@@ -12,7 +12,7 @@ const NotFound = () => {
         className={cn(
           "px-4 py-2 bg-background-secondary rounded-global border border-borders",
           "flex gap-2 items-center justify-center",
-          "hover:bg-background-tertiary"
+          "hover:bg-background-tertiary",
         )}>
         <span>Go to Home</span>
         <ArrowRight className="text-xs" />

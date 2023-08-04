@@ -16,7 +16,7 @@ const Footer = () => {
     <footer
       className={cn(
         "flex flex-col items-center gap-8 px-2 py-10 lg:py-12",
-        "border-t border-borders text-foreground-secondary"
+        "border-t border-borders text-foreground-secondary",
       )}>
       <div className="flex gap-4 justify-center">
         {socialLinks.map((link) => (
