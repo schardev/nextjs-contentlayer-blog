@@ -11,6 +11,7 @@ type BlogCardProps = {
   tags?: string[];
   href: string;
   className?: string;
+  priority?: boolean;
 };
 
 const BlogCard = ({
@@ -21,6 +22,7 @@ const BlogCard = ({
   img,
   href,
   className,
+  priority = false,
 }: BlogCardProps) => {
   return (
     <article className={className}>
@@ -30,6 +32,7 @@ const BlogCard = ({
           src={img}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           alt={title}
+          priority={priority}
         />
       )}
       <div>
