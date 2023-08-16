@@ -97,6 +97,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
               className="post-img shadow-md"
               src={post.image}
               alt={post.title}
+              priority
               sizes="(min-width: 1200px) 50vw, 100vw"
             />
           </div>
