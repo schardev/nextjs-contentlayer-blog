@@ -27,6 +27,7 @@ const tailwindConfig = {
       },
       borderRadius: {
         global: "var(--border-radius)",
+        inherit: "inherit",
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],

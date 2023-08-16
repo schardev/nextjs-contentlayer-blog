@@ -26,7 +26,7 @@
     @apply absolute top-2 right-2 p-1.5;
     @apply rounded-global opacity-0 bg-background-tertiary text-foreground-secondary;
     @apply transition-[opacity,transform];
-    @apply active:scale-90;
+    @apply active:scale-90 focus-visible:opacity-100;
   }
 
   pre:hover .copy-btn {
