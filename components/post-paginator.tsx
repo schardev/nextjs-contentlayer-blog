@@ -33,7 +33,7 @@ const PostPaginatorNav = ({
   pageLink: string;
 }) => {
   return (
-    <nav className="flex flex-col items-center gap-5 pt-4">
+    <nav className="flex flex-col items-center gap-5 pt-4 col-span-full">
       <PaginatorButton
         pageLink={`${pageLink}/${currentPage - 1}`}
         disable={currentPage === 1}>

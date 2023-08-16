@@ -18,17 +18,8 @@
     @apply aspect-5/3 rounded-md object-cover;
   }
 
-  .post-grid {
-    @apply grid [&>div]:col-span-full gap-8;
-    @apply md:grid-cols-2 lg:grid-cols-3 lg:gap-y-12;
-  }
-
   .tag {
     @apply text-sm font-medium px-3 py-1 rounded-full inline-block;
-  }
-
-  .page-heading {
-    @apply text-xl lg:text-2xl font-bold mb-8 lg:mb-12;
   }
 
   .copy-btn {

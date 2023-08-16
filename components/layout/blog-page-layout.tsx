@@ -15,8 +15,14 @@ const BlogPageLayout = ({
 }) => {
   return (
     <Element className={className}>
-      <h2 className="page-heading">{title}</h2>
-      <div className={cn("post-grid", gridClassName)}>{children}</div>
+      <h2 className="text-xl lg:text-2xl font-bold mb-8 lg:mb-12">{title}</h2>
+      <div
+        className={cn(
+          "grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-y-12",
+          gridClassName,
+        )}>
+        {children}
+      </div>
     </Element>
   );
 };
