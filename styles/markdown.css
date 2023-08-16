@@ -62,9 +62,13 @@
   }
 
   :not(pre) > code {
-    @apply text-[--color-code-fg] bg-[--color-code-bg] rounded-md;
+    @apply bg-[--color-code-bg] rounded-md;
     @apply py-[0.25em] px-[0.45em];
     @apply before:content-[''] after:content-[''];
+  }
+
+  :not(pre, a[href]) > code {
+    @apply text-[--color-code-fg];
   }
 
   pre {
