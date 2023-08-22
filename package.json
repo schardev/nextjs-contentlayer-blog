@@ -26,7 +26,7 @@
     "sharp": "^0.32.4"
   },
   "devDependencies": {
-    "@icons-pack/react-simple-icons": "^8.0.1",
+    "@icons-pack/react-simple-icons": "^9.0.0",
     "@tailwindcss/typography": "^0.5.9",
     "@types/mdast": "^4.0.0",
     "@types/mdx": "^2.0.6",
