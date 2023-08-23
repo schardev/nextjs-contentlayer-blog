@@ -64,7 +64,7 @@ Although packed with awesome features, there are some ideas on the horizon that 
 
 ## Theme
 
-Currently, the template offers two theme variations: **Slate** and **Stone**. But don't worry, you have the freedom to create own theme by customising and tweaking `config.css`.
+The template comes with a default theme based on **Stone** color palette from Tailwind CSS. But don't worry, you have the freedom to create your own theme by customising and tweaking `config.css`.
 
 ## Getting Started
 
