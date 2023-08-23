@@ -53,15 +53,9 @@ const tailwindConfig = {
       typography: () => ({
         custom: {
           css: {
-            // other stuff
-            "--tw-prose-border-radius": "var(--border-radius)",
-
-            // colors
             "--tw-prose-body": "var(--color-body)",
-            "--tw-prose-borders": "var(--color-borders)",
             "--tw-prose-headings": "var(--color-headings)",
             "--tw-prose-lead": "var(--color-lead)",
-            "--tw-prose-link-inactive": "var(--color-link-inactive)",
             "--tw-prose-links": "var(--color-links)",
             "--tw-prose-bold": "var(--color-bold)",
             "--tw-prose-counters": "var(--color-counters)",
@@ -71,17 +65,8 @@ const tailwindConfig = {
             "--tw-prose-quote-borders": "var(--color-quote-borders)",
             "--tw-prose-captions": "var(--color-captions)",
             "--tw-prose-code": "var(--color-code-fg)",
-            "--tw-prose-code-bg": "var(--color-code-bg)",
             "--tw-prose-pre-bg": "var(--color-pre-code-bg)",
             "--tw-prose-pre-code": "var(--color-pre-code-fg)",
-            "--tw-prose-pre-code-borders": "var(--color-pre-code-borders)",
-            "--tw-prose-pre-code-line-highlight":
-              "var(--color-pre-code-line-highlight)",
-            "--tw-prose-pre-code-line-highlight-border":
-              "var(--color-pre-code-line-highlight-border)",
-            "--tw-prose-pre-code-title-fg": "var(--color-pre-code-title-fg)",
-            "--tw-prose-pre-code-title-bg": "var(--color-pre-code-title-bg)",
-            "--tw-prose-th-bg": "var(--color-th-bg)",
             "--tw-prose-th-borders": "var(--color-th-borders)",
             "--tw-prose-td-borders": "var(--color-td-borders)",
           },
