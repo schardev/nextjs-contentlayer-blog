@@ -1,14 +1,14 @@
 import { cn } from "@/lib/utils";
-import { Cancel, InfoEmpty, WarningTriangle } from "iconoir-react";
+import { Xmark, InfoCircle, WarningTriangle } from "iconoir-react";
 
 const calloutVariants = {
   note: {
-    icon: InfoEmpty,
+    icon: InfoCircle,
     title: "Note",
     styles: "bg-teal-100 text-teal-950 dark:bg-teal-950 dark:text-teal-50",
   },
   danger: {
-    icon: Cancel,
+    icon: Xmark,
     title: "Danger",
     styles: "bg-red-100 text-red-950 dark:bg-red-950 dark:text-red-50",
   },
@@ -38,7 +38,7 @@ const Callout = ({ children, className, variant = "note" }: CalloutProps) => {
       )}>
       <p className="flex gap-2 items-center pb-4">
         <Icon />
-        <span className="font-medium">{title}</span>
+        <span className="font-medium mt-[0.25em]">{title}</span>
       </p>
       <div className="text-current space-y-4">{children}</div>
     </div>

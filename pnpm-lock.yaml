@@ -41,8 +41,8 @@ dependencies:
 
 devDependencies:
   '@icons-pack/react-simple-icons':
-    specifier: ^9.0.1
-    version: 9.0.1(react@18.2.0)
+    specifier: ^9.1.0
+    version: 9.1.0(react@18.2.0)
   '@tailwindcss/typography':
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.3.3)
@@ -77,8 +77,8 @@ devDependencies:
     specifier: ^9.0.0
     version: 9.0.0(eslint@8.50.0)
   iconoir-react:
-    specifier: ^6.11.0
-    version: 6.11.0(react@18.2.0)
+    specifier: ^7.0.0
+    version: 7.0.0(react@18.2.0)
   mdast-flatten-image-paragraphs:
     specifier: ^1.0.0
     version: 1.0.0
@@ -649,8 +649,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@icons-pack/react-simple-icons@9.0.1(react@18.2.0):
-    resolution: {integrity: sha512-sEgXYkZ07V/9vKwchoCdhec2Nm1zjpxsOrpa7gXbpE3KVeoptCgwHoJvmtJffAgjWl13JOakjfHCVJvB4rR3PQ==}
+  /@icons-pack/react-simple-icons@9.1.0(react@18.2.0):
+    resolution: {integrity: sha512-3v6W4SgkYX6bHfKrFvRZrxilv+4wXKYQ2DVRldqaZgcwGK5ajsW4PzLlqF9aw+uT/NeoMklunonoYwZlx9Kbwg==}
     peerDependencies:
       react: ^16.13 || ^17 || ^18
     dependencies:
@@ -3366,8 +3366,8 @@ packages:
     resolution: {integrity: sha512-0quDb7s97CfemeJAnW9wC0hw78MtW7NU3hqtCD75g2vFlDLt36llsYD7uB7SUzojLMP24N5IatXf7ylGXiGG9A==}
     dev: true
 
-  /iconoir-react@6.11.0(react@18.2.0):
-    resolution: {integrity: sha512-+1RgmEWh/9H0aYR2e8sDL5elDUYnkyOXO0E+RnwhkjhJY36Lge6r/9nv1n1FvDXoeFY48omkPUl8s/ciA0XOAg==}
+  /iconoir-react@7.0.0(react@18.2.0):
+    resolution: {integrity: sha512-qw/PfSxAOQ3YbtMPjU4jrivWXPBHrL0OIOyzIK79axLnEWUx6ck5dGSkuoyPTFVeXioR0oklLmA/swRKLH92mg==}
     peerDependencies:
       react: ^16.8.6 || ^17 || ^18
     dependencies:

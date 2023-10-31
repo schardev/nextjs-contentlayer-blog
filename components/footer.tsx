@@ -1,11 +1,11 @@
 import config from "@/lib/siteConfig";
 import { cn } from "@/lib/utils";
-import { GitHub, LinkedIn, Mail, Telegram, Twitter } from "iconoir-react";
+import { Github, Linkedin, Mail, Telegram, Twitter } from "iconoir-react";
 import Link from "./link";
 
 const socialLinks = [
-  { icon: GitHub, href: config.socials.github, title: "Github" },
-  { icon: LinkedIn, href: config.socials.linkedin, title: "LinkedIn" },
+  { icon: Github, href: config.socials.github, title: "Github" },
+  { icon: Linkedin, href: config.socials.linkedin, title: "LinkedIn" },
   { icon: Twitter, href: config.socials.twitter, title: "Twitter" },
   { icon: Telegram, href: config.socials.telegram, title: "Telegram" },
   { icon: Mail, href: `mailto:${config.socials.email}`, title: "Email" },

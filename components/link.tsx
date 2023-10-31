@@ -1,4 +1,4 @@
-import { ArrowTr } from "iconoir-react";
+import { ArrowUpRight } from "iconoir-react";
 import { default as NextLink } from "next/link";
 import { forwardRef } from "react";
 
@@ -29,7 +29,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
       {children}
       {isExternalLink && showIcon && (
         <span className="inline-flex text-[0.7em]">
-          <ArrowTr />
+          <ArrowUpRight />
         </span>
       )}
     </Link>
