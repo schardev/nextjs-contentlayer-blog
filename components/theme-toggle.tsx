@@ -11,9 +11,15 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/dropdown-menu";
+import { useEffect, useState } from "react";
 
 const ThemeToggle = () => {
+  const [mounted, setMounted] = useState(false);
   const { theme, themes, resolvedTheme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <DropdownMenu>
@@ -23,7 +29,7 @@ const ThemeToggle = () => {
           "text-sm align-middle p-2 rounded-md",
           "data-[state=open]:bg-background-secondary hover:bg-background-secondary",
         )}>
-        {resolvedTheme === "dark" ? <Moon /> : <SunLight />}
+        {mounted && resolvedTheme === "dark" ? <Moon /> : <SunLight />}
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
