@@ -84,7 +84,7 @@
     @apply border border-[--color-pre-code-borders] rounded-inherit;
 
     > [data-line] {
-      @apply pl-4 border-l-[length:--pre-code-line-highlight-border-width] border-l-transparent;
+      @apply px-4 border-l-[length:--pre-code-line-highlight-border-width] border-l-transparent;
     }
 
     > [data-highlighted-line] {
