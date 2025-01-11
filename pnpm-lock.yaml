@@ -41,8 +41,8 @@ dependencies:
 
 devDependencies:
   '@icons-pack/react-simple-icons':
-    specifier: ^9.1.0
-    version: 9.1.0(react@18.2.0)
+    specifier: ^11.0.0
+    version: 11.0.0(react@18.2.0)
   '@tailwindcss/typography':
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.3.5)
@@ -680,10 +680,10 @@ packages:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
     dev: true
 
-  /@icons-pack/react-simple-icons@9.1.0(react@18.2.0):
-    resolution: {integrity: sha512-3v6W4SgkYX6bHfKrFvRZrxilv+4wXKYQ2DVRldqaZgcwGK5ajsW4PzLlqF9aw+uT/NeoMklunonoYwZlx9Kbwg==}
+  /@icons-pack/react-simple-icons@11.0.0(react@18.2.0):
+    resolution: {integrity: sha512-o8ho4F8UiN7ie1X4gWUNJMgQw7lzPncfcXs6PHF02hDmwV71OngqI4eWEY+ibTNKaS5xdGyBXho9Zvx4JeyriA==}
     peerDependencies:
-      react: ^16.13 || ^17 || ^18
+      react: ^16.13 || ^17 || ^18 || ^19
     dependencies:
       react: 18.2.0
     dev: true
