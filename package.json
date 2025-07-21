@@ -37,7 +37,7 @@
     "contentlayer": "^0.3.4",
     "eslint": "^8.52.0",
     "eslint-config-next": "^14.0.1",
-    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-prettier": "^10.0.0",
     "iconoir-react": "^7.0.0",
     "mdast-flatten-image-paragraphs": "^1.0.0",
     "mdast-util-from-markdown": "^2.0.0",
